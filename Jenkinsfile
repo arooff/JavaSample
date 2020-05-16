@@ -13,12 +13,12 @@ pipeline {
     stages {
         stage("First step") {
             steps {
-                sh 'ssh pi@rasp \'hostname\''
+                sh 'hostname'
             }
         }
         stage("Second step") {
             steps {
-                sh 'ssh pi@rasp \'uptime\''
+                sh 'uptime'
             }
         }
     }
