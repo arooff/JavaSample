@@ -8,17 +8,17 @@ pipeline {
         }
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
-        //timestamps()
+        timestamps()
     }
     stages {
         stage("First step") {
             steps {
-                sh 'hostname'
+                sh 'ssh pi@rasp \'hostname\''
             }
         }
         stage("Second step") {
             steps {
-                sh 'uptime'
+                sh 'ssh pi@rasp \'uptime\''
             }
         }
     }
