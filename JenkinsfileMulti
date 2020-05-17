@@ -8,7 +8,11 @@ pipeline {
         }
     options {
         buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+<<<<<<< HEAD
        // timestamps()
+=======
+        //timestamps()
+>>>>>>> 406d9407fd423dd1f7a6b7ca761a303afe1bdaba
     }
     stages {
         stage("Java Compile") {
