@@ -1,0 +1,25 @@
+#!groovy
+// Check ub1 properties
+properties([disableConcurrentBuilds()])
+
+pipeline {
+    agent { 
+        label 'master'
+        }
+    options {
+        buildDiscarder(logRotator(numToKeepStr: '10', artifactNumToKeepStr: '10'))
+        //timestamps()
+    }
+    stages {
+        stage("Java Compile") {
+            steps {
+                sh 'javac HelloWorld.java'
+            }
+        }
+        stage("Java Execution") {
+            steps {
+                sh 'java HelloWorld'
+            }
+        }
+    }
+}
