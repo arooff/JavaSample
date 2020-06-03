@@ -17,7 +17,7 @@ pipeline {
                 echo "============== Start Building Image ================="
                 dir ('docker/toolbox') {
                 //sh 'docker build .'
-                sh 'docker build -t toolbox:latest .'
+                sh 'docker build -t arooff/toolbox:latest .'
             }
                 echo "============== Finish Building Image ================="
         }
