@@ -12,6 +12,11 @@ pipeline {
         timestamps()
     }
     stages {
+        stage("Preparation") {
+            steps {
+                sh 'ssh pi@rasp \'hostname\''
+            }
+        }
         stage("Docker Login") {
             steps {
                 echo "================ Docker Login ===================="
@@ -34,7 +39,7 @@ pipeline {
       }
         stage("Docker Push") {
             steps {
-                echo "================ Docker Login ===================="
+                echo "================ Docker Push ===================="
                   sh """
                   docker push arooff/toolbox:latest
                   """
