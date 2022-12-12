@@ -32,7 +32,7 @@ jobs:
           hostname
           hostname -i
           echo "Trying to connect to AWS"
-          aws s3 ls
+          aws s3 --help
         env:
           RNAME: ${{ inputs.runnerName }}
 
