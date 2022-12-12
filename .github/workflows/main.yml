@@ -31,6 +31,8 @@ jobs:
           echo "Runner name : ANDY REZNICHENKO"
           hostname
           hostname -i
+          echo "Trying to connect to AWS"
+          aws s3 ls
         env:
           RNAME: ${{ inputs.runnerName }}
 
