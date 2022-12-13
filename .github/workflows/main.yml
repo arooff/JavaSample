@@ -46,6 +46,11 @@ jobs:
           aws s3 --help
         env:
           RNAME: ${{ inputs.runnerName }}
+      - name: Set AWS variable
+        run: |
+          export AWS_ACCESS_KEY_ID=$KEY_ID
+          export AWS_SECRET_ACCESS_KEY=$ACCESS_KEY
+          export AWS_DEFAULT_REGION=eu-central-1
           
       - name: Output bucket content
         run: |
@@ -55,8 +60,8 @@ jobs:
           echo "S3_BUCKET_NAME: $S3_BUCKET_NAME"
           echo "TARGET_DAGS_DIR: $TARGET_DAGS_DIR"
           echo "2 ----------------------------------------------------------------------------"
-          #aws s3 sync . s3://${S3_BUCKET_NAME}/${TARGET_DAGS_DIR}/ --size-only
-          aws s3 sync . s3://andydagsbucket/dags/ --size-only
+          aws s3 sync . s3://${S3_BUCKET_NAME}/${TARGET_DAGS_DIR}/ --size-only
+          #aws s3 sync . s3://andydagsbucket/dags/ --size-only
 
       - name: List bucket content
         run: |
