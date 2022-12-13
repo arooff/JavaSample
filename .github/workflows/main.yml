@@ -4,7 +4,7 @@ name: dispatch_test
 
 env:
       KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      ACCESS_KEY: ${{ secrets.drwxr-xr-x  2 arooff arooff   4096 июн 22  2020  .vim/
+      ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_ID }}
       
 # Controls when the workflow will run
 on:
