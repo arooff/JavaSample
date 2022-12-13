@@ -52,7 +52,7 @@ jobs:
           echo "I'm in $(pwd) directory"
           cd $SOURCE_DAGS_DIR || (echo "Could not change directory on dags" && exit 1)
           #cd dags || (echo "Could not change directory on dags" && exit 1)
-          #aws s3 sync . s3://$S3_BUCKET_NAME/$TARGET_DAGS_DIR/ --size-only
+          aws s3 sync . s3://$S3_BUCKET_NAME/$TARGET_DAGS_DIR/ --size-only
 
       - name: List bucket content
         run: |
