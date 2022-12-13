@@ -5,6 +5,7 @@ name: dispatch_test
 env:
       KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      DAGS: ${{ secrets.DAGS_DIR }}
       
 # Controls when the workflow will run
 on:
@@ -54,4 +55,4 @@ jobs:
           export AWS_DEFAULT_REGION=eu-central-1
           echo "AWS_DEFAULT_REGION: $AWS_DEFAULT_REGION"
           aws s3 ls
-          aws s3 sync dags/ s3://andydagsbucket/{{ secrets.DAGS_DIR }}
+          aws s3 sync dags/ s3://andydagsbucket/$DAGS/
