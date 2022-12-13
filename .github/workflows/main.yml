@@ -5,7 +5,7 @@ name: dispatch_test
 env:
       KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
       ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-      TARGET_DAGS_DIR: ${{ secrets.DAGS_DIR }}
+      TARGET_DAGS_DIR: ${{ secrets.TARGET_DAGS_DIR }}
       SOURCE_DAGS_DIR: dags
       S3_BUCKET_NAME: andydagsbucket
       
