@@ -46,7 +46,7 @@ jobs:
           
       - name: Output bucket content
         run: |
-          echo "I'm in $pwd) directory"
+          echo "I'm in $(pwd) directory"
           AWS_ACCESS_KEY_ID=$KEY_ID AWS_SECRET_ACCESS_KEY=$ACCESS_KEY aws s3 ls
           
          
