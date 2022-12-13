@@ -2,6 +2,10 @@
 
 name: dispatch_test
 
+env:
+      AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+      AWS_SECRET_ACCESS_KEY: ${{ AWS_SECRET_ACCESS_KEY }}
+      
 # Controls when the workflow will run
 on:
   # Triggers the workflow on push or pull request events but only for the master branch
@@ -23,10 +27,14 @@ on:
         - Chernyshev
 
 jobs:
-  showVars:
+  checkout_and_sync:
     runs-on: ubuntu-latest
     steps:
-      - run: |
+      - name: Repo checkout
+        uses: actions/checkout@v3
+       
+      - name: Run some linux command
+        run: |
           echo "Runner name : $RNAME"
           echo "Runner name : ANDY REZNICHENKO"
           hostname
@@ -35,4 +43,11 @@ jobs:
           aws s3 --help
         env:
           RNAME: ${{ inputs.runnerName }}
+          
+      - name: Output bucket content
+        run: |
+          echo "I'm in $pwd) directory"
+          AWS_ACCESS_KEY_ID=$AWS_ACCESS_KEY_ID AWS_SECRET_ACCESS_KEY=$AWS_SECRET_ACCESS_KEY aws s3 ls
+          
+         
 
