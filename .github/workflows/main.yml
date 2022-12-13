@@ -55,7 +55,7 @@ jobs:
           echo "S3_BUCKET_NAME: $S3_BUCKET_NAME"
           echo "TARGET_DAGS_DIR: $TARGET_DAGS_DIR"
           echo "2 ----------------------------------------------------------------------------"
-          aws s3 sync . s3://$S3_BUCKET_NAME/$TARGET_DAGS_DIR/ --size-only
+          aws s3 sync . s3://${S3_BUCKET_NAME}/${TARGET_DAGS_DIR}/ --size-only
 
       - name: List bucket content
         run: |
