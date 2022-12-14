@@ -38,11 +38,14 @@ jobs:
        
       - name: Set AWS variables
         run: |
+          echo "KEY_ID: $KEY_ID"
+          echo "ACCESS_KEY: $ACCESS_KEY"
+          
           echo "AWS_ACCESS_KEY_ID=$KEY_ID" >> $GITHUB_ENV
           echo "AWS_SECRET_ACCESS_KEY=$ACCESS_KEY" >> $GITHUB_ENV
            
-          echo "AWS_ACCESS_KEY_ID: {{ env.AWS_ACCESS_KEY_ID }}
-          echo "AWS_SECRET_ACCESS_KEY: {{ env.AWS_SECRET_ACCESS_KEY }}
+          echo "AWS_ACCESS_KEY_ID: {{ env.AWS_ACCESS_KEY_ID }}"
+          echo "AWS_SECRET_ACCESS_KEY: {{ env.AWS_SECRET_ACCESS_KEY }}"
 
       - name: Run some linux command
         run: |
