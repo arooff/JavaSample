@@ -36,6 +36,14 @@ jobs:
       - name: Repo checkout
         uses: actions/checkout@v3
        
+      - name: Set AWS variables
+        run: |
+          echo "AWS_ACCESS_KEY_ID=$KEY_ID" >> $GITHUB_ENV
+          echo "AWS_SECRET_ACCESS_KEY=$ACCESS_KEY" >> $GITHUB_ENV
+           
+          echo "AWS_ACCESS_KEY_ID: {{ env.AWS_ACCESS_KEY_ID }}
+          echo "AWS_SECRET_ACCESS_KEY: {{ env.AWS_SECRET_ACCESS_KEY }}
+
       - name: Run some linux command
         run: |
           echo "Runner name : $RNAME"
