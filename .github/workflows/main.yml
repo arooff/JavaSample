@@ -31,12 +31,20 @@ on:
 
 jobs:
   checkout_and_sync:
-    if: github.repository == 'octo-org/octo-repo-prod'
+    #if: github.repository == 'octo-org/octo-repo-prod'
     runs-on: ubuntu-latest
     steps:
       - name: Repo checkout
         uses: actions/checkout@v3
-       
+     
+      - name: Failing step
+        id: demo
+        run: exit 1
+        
+      - name: The demo step has failed
+        if: ${{ failure() && steps.demo.conclusion == 'failure' }}
+        run: echo "HERE"
+     
       - name: Set AWS variables
         run: |
           echo "AWS_ACCESS_KEY_ID=$KEY_ID" >> $GITHUB_ENV
@@ -52,14 +60,14 @@ jobs:
         env:
           RNAME: ${{ inputs.runnerName }}
           
-      - name: Output bucket content
-        run: |
-          echo "I'm in $(pwd) directory"
-          cd $SOURCE_DAGS_DIR || (echo "Could not change directory on dags" && exit 1)
-          aws s3 sync . s3://${S3_BUCKET_NAME}/${TARGET_DAGS_DIR}/ --size-only
+#      - name: Output bucket content
+#        run: |
+#          echo "I'm in $(pwd) directory"
+#          cd $SOURCE_DAGS_DIR || (echo "Could not change directory on dags" && exit 1)
+#          aws s3 sync . s3://${S3_BUCKET_NAME}/${TARGET_DAGS_DIR}/ --size-only
 
-      - name: List bucket content
-        run: |
-          aws s3 ls s3://$S3_BUCKET_NAME --recursive
-          echo "------------------------------------------------------------------------------------------------"
-          aws s3 ls s3://$S3_BUCKET_NAME --recursive | awk '{$1=$2=$3=""; print $0}' | sed 's/^[ \t]*//'
+#      - name: List bucket content
+#        run: |
+#          aws s3 ls s3://$S3_BUCKET_NAME --recursive
+#          echo "------------------------------------------------------------------------------------------------"
+#          aws s3 ls s3://$S3_BUCKET_NAME --recursive | awk '{$1=$2=$3=""; print $0}' | sed 's/^[ \t]*//'
