@@ -31,6 +31,7 @@ on:
 
 jobs:
   checkout_and_sync:
+    if: github.repository == 'octo-org/octo-repo-prod'
     runs-on: ubuntu-latest
     steps:
       - name: Repo checkout
