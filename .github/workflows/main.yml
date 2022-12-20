@@ -39,13 +39,26 @@ jobs:
      
       - name: Failing step
         id: demo
-        run: exit 1
+        run: exit 0
         
       - name: The demo step has failed
         #if: ${{ failure() && steps.demo.conclusion == 'failure' }}
         if: ${{ always() }}
         run: echo "HERE"
      
+      - name: python_code
+        shell: python
+        run: |
+            """
+            Creates two files:
+            names.lst - projects to build
+            tags.lst - tags to add into source repository
+            """
+          
+            import os
+            a="andy"
+            print("Hello ",a)
+            
       - name: Set AWS variables
         run: |
           echo "AWS_ACCESS_KEY_ID=$KEY_ID" >> $GITHUB_ENV
