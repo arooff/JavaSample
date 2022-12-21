@@ -1,6 +1,19 @@
-name: outputs
+name: out_example
+
+# Controls when the workflow will run
 on:
   workflow_dispatch:
+    inputs:
+      runnerName:
+        description: 'Runner name'
+        required: true
+        default: 'Andy'
+        type: choice
+        options:
+        - Kryvokon
+        - Andy
+        - Chernyshev
+
 jobs:
   job1:
     runs-on: ubuntu-latest
